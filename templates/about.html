@@ -13,8 +13,8 @@
 <ion-list>
 <input type="text" ng-model="folderSearch" class="search-query" placeholder="Search">
 
-
-      <ion-item ng-repeat="folder in folders | filter:folderSearch" type="item-text-wrap" href="#/tab/folderListing/{{folder.Id}}">
+ 
+      <ion-item ng-repeat="folder in folders | filter:folderSearch" type="item-text-wrap" href="#/tab/folderListing/{{folder.Name}}">
         <h3>{{folder.Name}}</h3>
 
         <p>{{folder.fileType}}</p>

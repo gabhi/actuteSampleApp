@@ -47,31 +47,20 @@ angular.module('starter.controllers').controller('fileFolderListCtrl',
 
         console.log($stateParams.folderName);
 
-        var folderId = "";
+        var folderName = "/";
         if ($stateParams.folderName) {
-            folderId = $stateParams.folderName;
+            folderName = $stateParams.folderName;
         }
         var headers = {
             "Content-Type": "application/json; charset=utf-8"
         };
-        console.log("auith " + $rootScope.AuthId);
+        console.log("auith " + folderName);
+        var data = {
+            'AuthId': $rootScope.AuthId,
+            'fileName': folderName,
+            'fileType': "Directory"
 
-        var data = {};
-        if (folderId === "")
-            data = {
-                'AuthId': $rootScope.AuthId,
-
-                'fileType': "Directory"
-
-            };
-        else {
-            data = {
-                'AuthId': $rootScope.AuthId,
-                'folderId': folderId,
-                'fileType': "Directory"
-
-            };
-        }
+        };
 
 
 
