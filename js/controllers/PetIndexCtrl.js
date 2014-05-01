@@ -58,7 +58,7 @@ angular.module('starter.controllers').controller('fileFolderListCtrl',
         var data = {
             'AuthId': $rootScope.AuthId,
             'fileName': folderName,
-            'fileType': "Directory"
+            'fileType': "*"
 
         };
 
