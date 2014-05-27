@@ -112,6 +112,13 @@ angular.module('starter.controllers').controller('PetIndexCtrl',
                 if (dataResponse.data.AuthId) {
                     $rootScope.userData = dataResponse.data.User;
                     $rootScope.AuthId = dataResponse.data.AuthId;
+
+                    actuate.load("viewer");
+                    var requestOptions = new actuate.RequestOptions();
+                    requestOptions.setRepositoryType(mySettings.repositoryType);
+
+                    actuate.initialize(mySettings.jsapiUrl, requestOptions, $scope.username,
+                        $scope.password, null, null);
                     $location.path('/tab/folderListing');
                 }
             });

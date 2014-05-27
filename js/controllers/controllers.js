@@ -6,7 +6,8 @@ myApp.constant('mySettings', {
     getFolderListing: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/folders',
     getFileDetails: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/files/',
     visuals: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/visuals/',
-
+    repositoryType: "Enterprise",
+    jsapiUrl: "http://vmcip2.actuate.com:8700/iportal",
     getReportPage: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/getReportPage'
 });
 
