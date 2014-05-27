@@ -2,7 +2,6 @@
 <ion-content has-header="true" has-tabs="true">
 
 
-
 <div class="card">
   <div class="item item-divider">
     {{fileName}}
@@ -33,10 +32,15 @@
 
 
   </div>
-  <div class="col"><button class="button button-calm">
+  <div class="col"><button class="button button-calm" ng-click="showMyReport(fileDetails.Name)">
     Metadata
   </button></div>
   
+</div>
+
+<div class="row">
+
+<div id="viewer1"></div>
 </div>
   </div>
 </div>

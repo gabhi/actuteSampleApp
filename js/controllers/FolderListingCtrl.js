@@ -32,6 +32,17 @@ angular.module('starter.controllers').controller('fileCtrl',
                 'AuthId': $rootScope.AuthId
             };
         }
+        $scope.showMyReport = function(fileName, bookmark) {
+            var viewer = new actuate.Viewer("viewer1");
+            viewer.setReportName(fileName);
+            if (bookmark) {
+                viewer.setReportletBookmark(bookmark);
+            }
+            viewer.submit();
+            viewer.setReportletBookmark("");
+        }
+
+
         dataService.getData(mySettings.getFileDetails + fileId, 'json', 'GET', data, null).then(function(dataResponse) {
             $scope.fileDetails = dataResponse.data.File;
             $scope.fileName = dataResponse.data.File.Name.split('/').pop();
@@ -62,6 +73,9 @@ angular.module('starter.controllers').controller('bookmarksCtrl',
             }
 
         });
+
+
+
 
 
     }
