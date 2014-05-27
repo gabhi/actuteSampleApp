@@ -33,7 +33,7 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
                 controller: 'PetIndexCtrl'
             }
         }
-    }).state('tab.pet-index1', {
+    }).state('tab.folderListing', {
         url: '/folderListing',
         views: {
             'pets-tab': {
@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
                 controller: 'fileFolderListCtrl'
             }
         }
-    }).state('tab.pet-index11', {
+    }).state('tab.folderListing-id', {
         url: '/folderListing/:folderId',
         views: {
             'pets-tab': {
@@ -50,12 +50,21 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
             }
         }
     })
-        .state('tab.pet-index111', {
+        .state('tab.fileListing-id', {
             url: '/fileListing/:fileId',
             views: {
                 'pets-tab': {
                     templateUrl: 'templates/fileListing.html',
                     controller: 'fileCtrl'
+                }
+            }
+        })
+        .state('tab.bookmarks', {
+            url: '/bookmarks/:fileId',
+            views: {
+                'pets-tab': {
+                    templateUrl: 'templates/bookmarks.html',
+                    controller: 'bookmarksCtrl'
                 }
             }
         })

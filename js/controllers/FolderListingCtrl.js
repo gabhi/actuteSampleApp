@@ -33,10 +33,40 @@ angular.module('starter.controllers').controller('fileCtrl',
             };
         }
         dataService.getData(mySettings.getFileDetails + fileId, 'json', 'GET', data, null).then(function(dataResponse) {
-            $scope.my = dataResponse;
+            $scope.fileDetails = dataResponse.data.File;
+            $scope.fileName = dataResponse.data.File.Name.split('/').pop();
         });
+
+
     }
 );
+
+angular.module('starter.controllers').controller('bookmarksCtrl',
+    function($scope, $http, $stateParams, $location, $rootScope, mySettings, dataService) {
+        var fileId = "";
+        var data = {
+            'AuthId': $rootScope.AuthId,
+            'fileType': "*"
+        };
+        if ($stateParams.fileId) {
+            fileId = $stateParams.fileId;
+            data = {
+                'AuthId': $rootScope.AuthId
+            };
+        }
+        dataService.getData(mySettings.visuals + fileId + "/bookmarks", 'json', 'GET', data, null).then(function(dataResponse) {
+            debugger;
+            if (dataResponse && dataResponse.data.BookmarkList && dataResponse.data.BookmarkList.BookMark) {
+
+                $scope.bookmarks = dataResponse.data.BookmarkList.BookMark;
+            }
+
+        });
+
+
+    }
+);
+
 angular.module('starter.controllers').controller('fileFolderListCtrl',
     function($scope, $http, $stateParams, $location, $rootScope, mySettings,
         dataService
