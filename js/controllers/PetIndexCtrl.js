@@ -1,87 +1,70 @@
-// A simple controller that fetches a list of data from a service
-
 var myApp = angular.module('starter.services', []);
-
 myApp.service('dataService', function($http) {
     delete $http.defaults.headers.common['X-Requested-With'];
     this.getData = function(url, dataType, method, data, headers) {
-        // $http() returns a $promise that we can add handlers with .then()
-        return $http({
-            url: url,
-            dataType: dataType,
-            method: method,
-            data: data,
-            headers: headers
-        });
-    }
-    this.gData = function(url, dataType, method, data, headers) {
-        // $http() returns a $promise that we can add handlers with .then()
-        return $http({
+        if (method === "GET") return $http({
             url: url,
             dataType: dataType,
             method: method,
             params: data,
             headers: headers
         });
+        else
+            return $http({
+                url: url,
+                dataType: dataType,
+                method: method,
+                data: data,
+                headers: headers
+            });
     }
 });
-
-
-
-angular.module('starter.controllers').controller('fileFolderListCtrl',
-    //'$routeParams',
-    //'$upload',
-    //'FileFolderListingService',
-    //'FileDetailsListingService',
-    //'GetReportPageService',
-    function($scope, $http, $stateParams, $location, $rootScope, mySettings,
-        dataService
-        //, $routeParams
-        /*,
-     $upload,
-        FileFolderListingService,
-        FileDetailsListingService,
-        GetReportPageService
-        */
-    ) {
-
-        console.log($stateParams.folderName);
-
-        var folderName = "/";
-        if ($stateParams.folderName) {
-            folderName = $stateParams.folderName;
-        }
-        var headers = {
-            "Content-Type": "application/json; charset=utf-8"
-        };
-        console.log("auith " + folderName);
+angular.module('starter.controllers').controller('fileCtrl',
+    function($scope, $http, $stateParams, $location, $rootScope, mySettings, dataService) {
+        var fileId = "";
         var data = {
             'AuthId': $rootScope.AuthId,
-            'fileName': folderName,
             'fileType': "*"
-
         };
+        if ($stateParams.fileId) {
+            fileId = $stateParams.fileId;
+            data = {
+                'AuthId': $rootScope.AuthId
+            };
+        }
+        dataService.getData(mySettings.getFileDetails + fileId, 'json', 'GET', data, null).then(function(dataResponse) {
+            $scope.my = dataResponse;
+        });
+    }
+);
+angular.module('starter.controllers').controller('fileFolderListCtrl',
+    function($scope, $http, $stateParams, $location, $rootScope, mySettings,
+        dataService
+    ) {
+        var folderId = "";
+        var data = {
+            'AuthId': $rootScope.AuthId
+        };
+        if ($stateParams.folderId) {
+            folderId = $stateParams.folderId;
 
+            data = {
+                'AuthId': $rootScope.AuthId,
+                'folderId': folderId,
+                'fileType': "*"
 
-
-
-        dataService.gData(mySettings.getFolderListing, 'json', 'GET', data, headers).then(function(dataResponse) {
+            };
+        }
+        dataService.getData(mySettings.getFolderListing, 'json', 'GET', data, null).then(function(dataResponse) {
 
             $scope.my = dataResponse;
             $scope.folders = dataResponse.data.ItemList.File;
         });
-
-
-
-
     }
 );
 angular.module('starter.controllers').controller('PetIndexCtrl',
     function($scope, $http, $stateParams,
         $location, $rootScope, dataService, mySettings) {
-        var headers = {
-            "Content-Type": "application/json; charset=utf-8"
-        };
         $scope.username = "administrator";
         $scope.password = "";
         $scope.login = function() {
@@ -90,7 +73,7 @@ angular.module('starter.controllers').controller('PetIndexCtrl',
                 'password': $scope.password
             };
 
-            dataService.getData(mySettings.loginUrl, 'json', 'POST', data, headers).then(function(dataResponse) {
+            dataService.getData(mySettings.loginUrl, 'json', 'POST', data, null).then(function(dataResponse) {
                 console.log(dataResponse.data);
 
                 $scope.response = dataResponse;

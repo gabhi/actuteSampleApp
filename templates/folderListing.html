@@ -1,0 +1,53 @@
+<!-- 
+  This template gets placed in the Pet tab's <ion-nav-view> directive.
+  It was wired up in the app config (app.js) 
+  The 'pets' data comes from its $scope within PetIndexCtrl (controller.js)
+-->
+<ion-view title="About us">
+<ion-content has-header="true" has-tabs="true">
+
+
+
+
+
+<ion-list>
+<input type="text" ng-model="folderSearch" class="search-query" placeholder="Search">
+
+<div ng-repeat="folder in folders | filter:folderSearch" >
+
+<div ng-switch="folder.FileType">
+    <div ng-switch-when="Directory">
+      <ion-item ng-switch="folder.FileType === 'Directory'" class="animate-if" type="item-text-wrap" ng-href="#/tab/folderListing/{{folder.Id}}">
+  <h3>{{folder.Name}}</h3>
+
+  <p>{{folder.FileType}}</p>
+</ion-item>
+    </div>
+    <div ng-switch-default>
+      <ion-item ng-switch="folder.FileType === 'Directory'" class="animate-if" type="item-text-wrap" ng-href="#/tab/fileListing/{{folder.Id}}">
+  <h3>{{folder.Name}}</h3>
+
+  <p>{{folder.FileType}}</p>
+</ion-item>
+    </div>
+    
+</div>
+
+  
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</ion-list>
+
+
+</ion-content>
+</ion-view>

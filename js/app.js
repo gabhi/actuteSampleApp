@@ -37,19 +37,28 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
         url: '/folderListing',
         views: {
             'pets-tab': {
-                templateUrl: 'templates/about.html',
+                templateUrl: 'templates/folderListing.html',
                 controller: 'fileFolderListCtrl'
             }
         }
     }).state('tab.pet-index11', {
-        url: '/folderListing/:folderName',
+        url: '/folderListing/:folderId',
         views: {
             'pets-tab': {
-                templateUrl: 'templates/about.html',
+                templateUrl: 'templates/folderListing.html',
                 controller: 'fileFolderListCtrl'
             }
         }
     })
+        .state('tab.pet-index111', {
+            url: '/fileListing/:fileId',
+            views: {
+                'pets-tab': {
+                    templateUrl: 'templates/fileListing.html',
+                    controller: 'fileCtrl'
+                }
+            }
+        })
         .state('tab.post-index', {
             url: '/post/:petId',
             views: {
@@ -83,7 +92,7 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
         url: '/about',
         views: {
             'about-tab': {
-                templateUrl: 'templates/about.html',
+                templateUrl: 'templates/folderListing.html',
                 controller: 'CatchAllController'
 
             }

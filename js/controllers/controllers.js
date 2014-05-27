@@ -9,7 +9,7 @@ myApp.constant('mySettings', {
     nsPrefix: 's',
     loginUrl: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/login',
     getFolderListing: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/folders',
-    getFileDetails: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/getFileDetails',
+    getFileDetails: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/files/',
     getReportPage: 'http://agaikwad-pc.actuate.com:5000/ihub/v1/getReportPage'
 });
 
