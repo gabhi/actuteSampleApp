@@ -59,15 +59,6 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
                 }
             }
         })
-        .state('tab.post-index', {
-            url: '/post/:petId',
-            views: {
-                'pets-tab': {
-                    templateUrl: 'templates/post-index.html',
-                    controller: 'PostIndexCtrl'
-                }
-            }
-        })
         .state('tab.pet-detail', {
             url: '/petsss/:petId',
             views: {
@@ -82,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
         url: '/adopt',
         views: {
             'adopt-tab': {
-                templateUrl: 'templates/adopt.html',
+                templateUrl: 'templates/feedback.html',
                 controller: 'CatchAllController'
             }
         }
