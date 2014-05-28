@@ -81,6 +81,42 @@ angular.module('starter.controllers').controller('bookmarksCtrl',
     }
 );
 
+angular.module('starter.controllers').controller('showreportCtrl',
+    function($scope, $http, $stateParams, $location, $rootScope, mySettings, dataService) {
+        var fileId = "";
+        var data = {
+            'AuthId': $rootScope.AuthId,
+            'fileType': "*"
+        };
+
+        $scope.me = $stateParams;
+        if ($stateParams.fileId) {
+            fileId = $stateParams.fileId;
+            data = {
+                'AuthId': $rootScope.AuthId
+            };
+        }
+
+
+        dataService.getData(mySettings.getFileDetails + fileId, 'json', 'GET', data, null).then(function(dataResponse) {
+            $scope.fileDetails = dataResponse.data.File;
+            $scope.fileName = dataResponse.data.File.Name.split('/').pop();
+
+            var viewer = new actuate.Viewer("viewer1");
+            viewer.setReportName($scope.fileDetails.Name);
+
+            viewer.submit();
+
+        });
+
+
+
+
+
+
+    }
+);
+
 angular.module('starter.controllers').controller('fileFolderListCtrl',
     function($scope, $http, $stateParams, $location, $rootScope, mySettings,
         dataService
@@ -89,6 +125,7 @@ angular.module('starter.controllers').controller('fileFolderListCtrl',
         var data = {
             'AuthId': $rootScope.AuthId
         };
+
         if ($stateParams.folderId) {
             folderId = $stateParams.folderId;
 

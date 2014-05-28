@@ -67,6 +67,14 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
                     controller: 'bookmarksCtrl'
                 }
             }
+        }).state('tab.showReport', {
+            url: '/showreport/:fileId',
+            views: {
+                'pets-tab': {
+                    templateUrl: 'templates/showreport.html',
+                    controller: 'showreportCtrl'
+                }
+            }
         })
         .state('tab.pet-detail', {
             url: '/petsss/:petId',
