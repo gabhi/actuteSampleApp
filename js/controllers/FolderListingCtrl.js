@@ -65,6 +65,30 @@ angular.module('starter.controllers').controller('bookmarksCtrl',
                 'AuthId': $rootScope.AuthId
             };
         }
+
+
+        $scope.showMyReport = function(fileName, bookmark) {
+
+            if (bookmark) {
+                $scope.viewer.setReportletBookmark(bookmark);
+            }
+            $scope.viewer.submit();
+            $scope.viewer.setReportletBookmark("");
+        }
+
+
+        dataService.getData(mySettings.getFileDetails + fileId, 'json', 'GET', data, null).then(function(dataResponse) {
+            $scope.fileDetails = dataResponse.data.File;
+            $scope.fileName = dataResponse.data.File.Name.split('/').pop();
+
+            $scope.viewer = new actuate.Viewer("viewer1");
+            $scope.viewer.setReportName($scope.fileDetails.Name);
+
+            $scope.viewer.submit();
+
+        });
+
+
         dataService.getData(mySettings.visuals + fileId + "/bookmarks", 'json', 'GET', data, null).then(function(dataResponse) {
             debugger;
             if (dataResponse && dataResponse.data.BookmarkList && dataResponse.data.BookmarkList.BookMark) {

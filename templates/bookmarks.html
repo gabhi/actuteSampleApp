@@ -5,19 +5,33 @@
 
 
 
-<ion-list>
+
+
+ 
+
 <input type="text" ng-model="bookmarkSearch" class="search-query" placeholder="Search">
 
+<div class="list">
 
-<ion-item   ng-repeat="bookmark in bookmarks | filter:bookmarkSearch">
-{{bookmark.BookMarkValue}} 
-</ion-item>
-</<ion-list>
+        <div class="item" ng-repeat="bookmark in bookmarks | filter:bookmarkSearch" 
+                  item="bookmark"
+                   
+                  >
+          <div class="left-side" ng-click="showMyReport( fileName,bookmark.BookMarkValue);">Left {{bookmark.BookMarkValue}}</div>
+         </div>
+
+      </div>
 
 
 
 
 
+
+
+{{fileName}} {{me}}
+
+
+<div   id="viewer1"></div>
 
 
 </ion-content>
