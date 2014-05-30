@@ -51,7 +51,11 @@ angular.module('starter.controllers').controller('fileCtrl',
 
     }
 );
+angular.module('starter.controllers').controller('visualsCtrl',
+    function($scope, $http, $stateParams, $location, $rootScope, mySettings, dataService) {
 
+    }
+);
 angular.module('starter.controllers').controller('bookmarksCtrl',
     function($scope, $http, $stateParams, $location, $rootScope, mySettings, dataService) {
         var fileId = "";

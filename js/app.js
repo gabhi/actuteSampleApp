@@ -59,6 +59,15 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
                 }
             }
         })
+        .state('tab.visuals', {
+            url: '/visuals/:fileId',
+            views: {
+                'pets-tab': {
+                    templateUrl: 'templates/visuals.html',
+                    controller: 'visualsCtrl'
+                }
+            }
+        })
         .state('tab.bookmarks', {
             url: '/bookmarks/:fileId',
             views: {
