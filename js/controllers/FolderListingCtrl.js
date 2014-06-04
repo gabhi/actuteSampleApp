@@ -220,9 +220,9 @@ angular.module('starter.controllers').controller('PetIndexCtrl',
                 $scope.response = dataResponse;
 
 
-                if (dataResponse.data.AuthId) {
-                    $rootScope.userData = dataResponse.data.User;
-                    $rootScope.AuthId = dataResponse.data.AuthId;
+                if (dataResponse.data.authId) {
+                    $rootScope.userData = dataResponse.data.user;
+                    $rootScope.AuthId = dataResponse.data.authId;
 
                     actuate.load("viewer");
                     var requestOptions = new actuate.RequestOptions();
